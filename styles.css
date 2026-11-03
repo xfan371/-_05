@@ -106,7 +106,9 @@ h2 { font-size: 24px; margin: 0; }
   overflow-wrap: anywhere;
   box-shadow: 0 3px 16px #9c48600a;
 }
+.fortune-options { max-width: 320px; }
 .fortune-result { min-height: 195px; display: flex; align-items: center; }
+.zodiac-tip { color: #a13e65; }
 .result strong { color: #9e315d; font-size: 20px; }
 .result .subline { color: var(--muted); font-size: 14px; }
 .placeholder { color: #866f7a; }
