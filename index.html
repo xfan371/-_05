@@ -17,18 +17,20 @@
       <span class="topbar-note">摸鱼魔芋磨玉</span>
     </header>
     <div class="layout">
-      <nav class="sidebar" aria-label="选择小游戏">
+      <nav class="sidebar" aria-label="小游戏导航">
         <div class="nav-caption">游戏目录 <span>01 — 05</span></div>
-        <button class="nav-item active" type="button" data-game="fortune" aria-current="page"><span
+        <div class="game-tabs" role="tablist" aria-label="选择小游戏">
+        <button class="nav-item active" type="button" id="tab-fortune" role="tab" data-game="fortune" aria-controls="fortune" aria-selected="true" aria-current="page"><span
             class="nav-number">01</span>赛博运势<span class="nav-arrow" aria-hidden="true">↗</span></button>
-        <button class="nav-item" type="button" data-game="attendance"><span class="nav-number">02</span>点名雷达<span
+        <button class="nav-item" type="button" id="tab-attendance" role="tab" data-game="attendance" aria-controls="attendance" aria-selected="false" tabindex="-1"><span class="nav-number">02</span>点名雷达<span
             class="nav-arrow" aria-hidden="true">↗</span></button>
-        <button class="nav-item" type="button" data-game="pet"><span class="nav-number">03</span>电子宠物<span
+        <button class="nav-item" type="button" id="tab-pet" role="tab" data-game="pet" aria-controls="pet" aria-selected="false" tabindex="-1"><span class="nav-number">03</span>电子宠物<span
             class="nav-arrow" aria-hidden="true">↗</span></button>
-        <button class="nav-item" type="button" data-game="compliment"><span class="nav-number">04</span>废话生成器<span
+        <button class="nav-item" type="button" id="tab-compliment" role="tab" data-game="compliment" aria-controls="compliment" aria-selected="false" tabindex="-1"><span class="nav-number">04</span>废话生成器<span
             class="nav-arrow" aria-hidden="true">↗</span></button>
-        <button class="nav-item" type="button" data-game="bug"><span class="nav-number">05</span>Bug 模拟器<span
+        <button class="nav-item" type="button" id="tab-bug" role="tab" data-game="bug" aria-controls="bug" aria-selected="false" tabindex="-1"><span class="nav-number">05</span>Bug 模拟器<span
             class="nav-arrow" aria-hidden="true">↗</span></button>
+        </div>
         <div class="sidebar-foot">今天也要认真摸鱼。<br>所有结果仅供娱乐。</div>
       </nav>
       <main class="main" id="main-content">
@@ -40,12 +42,12 @@
           </div>
           <div class="counter"><strong>05</strong><span>个小游戏</span></div>
         </div>
-        <section class="game-panel" id="fortune" aria-labelledby="fortune-title">
+        <section class="game-panel" id="fortune" role="tabpanel" aria-labelledby="tab-fortune fortune-title">
           <div class="panel-heading">
             <div class="panel-icon icon-orange" aria-hidden="true">✷</div>
             <div>
               <p class="eyebrow">GAME 01 / LUCK</p>
-              <h2 id="fortune-title">赛博运势</h2>
+              <h2 id="fortune-title" tabindex="-1">赛博运势</h2>
             </div>
           </div>
           <p class="description">今日的宇宙信号已经接入。选一个星座，接收一条专属好运。</p>
@@ -71,12 +73,12 @@
           <button class="primary-button" id="fortune-button" type="button">抽取今日运势 <span
               aria-hidden="true">↗</span></button>
         </section>
-        <section class="game-panel" id="attendance" aria-labelledby="attendance-title" hidden>
+        <section class="game-panel" id="attendance" role="tabpanel" aria-labelledby="tab-attendance attendance-title" hidden>
           <div class="panel-heading">
             <div class="panel-icon icon-yellow" aria-hidden="true">◉</div>
             <div>
               <p class="eyebrow">GAME 02 / ODDS</p>
-              <h2 id="attendance-title">点名雷达</h2>
+              <h2 id="attendance-title" tabindex="-1">点名雷达</h2>
             </div>
           </div>
           <p class="description">输入教室气象，看看今天的“点名雷达”有多灵敏。计算结果纯属虚构，请按时上课。</p>
@@ -95,12 +97,12 @@
           <button class="primary-button" id="attendance-button" type="button">计算点名概率 <span
               aria-hidden="true">→</span></button>
         </section>
-        <section class="game-panel" id="pet" aria-labelledby="pet-title" hidden>
+        <section class="game-panel" id="pet" role="tabpanel" aria-labelledby="tab-pet pet-title" hidden>
           <div class="panel-heading">
             <div class="panel-icon icon-green" aria-hidden="true">✿</div>
             <div>
               <p class="eyebrow">GAME 03 / PET</p>
-              <h2 id="pet-title">电子宠物</h2>
+              <h2 id="pet-title" tabindex="-1">电子宠物</h2>
             </div>
           </div>
           <p class="description">你的课间搭子已经就位。点击它打招呼，或者请它吃点东西。</p>
@@ -110,12 +112,12 @@
                 aria-hidden="true">+</span></button><span id="pet-count">已投喂 0 次</span></div>
           <div class="result compact-result" id="pet-output" role="status" aria-live="polite">小猫：你好呀，今天也辛苦啦。</div>
         </section>
-        <section class="game-panel" id="compliment" aria-labelledby="compliment-title" hidden>
+        <section class="game-panel" id="compliment" role="tabpanel" aria-labelledby="tab-compliment compliment-title" hidden>
           <div class="panel-heading">
             <div class="panel-icon icon-pink" aria-hidden="true">♡</div>
             <div>
               <p class="eyebrow">GAME 04 / WORDS</p>
-              <h2 id="compliment-title">废话生成器</h2>
+              <h2 id="compliment-title" tabindex="-1">废话生成器</h2>
             </div>
           </div>
           <p class="description">输入名字，随机收获一句彩虹屁或无伤大雅的吐槽。</p>
@@ -129,12 +131,12 @@
           <button class="primary-button" id="compliment-button" type="button">生成一句 <span
               aria-hidden="true">↗</span></button>
         </section>
-        <section class="game-panel" id="bug" aria-labelledby="bug-title" hidden>
+        <section class="game-panel" id="bug" role="tabpanel" aria-labelledby="tab-bug bug-title" hidden>
           <div class="panel-heading">
             <div class="panel-icon icon-blue" aria-hidden="true">{ }</div>
             <div>
               <p class="eyebrow">GAME 05 / CHAOS</p>
-              <h2 id="bug-title">Bug 模拟器</h2>
+              <h2 id="bug-title" tabindex="-1">Bug 模拟器</h2>
             </div>
           </div>
           <p class="description">粘贴一小段代码，看看它能变得多离谱。只改文字，不会运行或上传代码。</p>
