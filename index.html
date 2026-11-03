@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff4f7">
+  <title>摸鱼箱子_05 | 课间轻松一下</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="src/app.js" defer></script>
+</head>
+
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">✦</span><span>摸鱼箱子_05</span></div>
+      <span class="topbar-note">摸鱼魔芋磨玉</span>
+    </header>
+    <div class="layout">
+      <nav class="sidebar" aria-label="选择小游戏">
+        <div class="nav-caption">游戏目录 <span>01 — 05</span></div>
+        <button class="nav-item active" type="button" data-game="fortune" aria-current="page"><span
+            class="nav-number">01</span>赛博运势<span class="nav-arrow" aria-hidden="true">↗</span></button>
+        <button class="nav-item" type="button" data-game="attendance"><span class="nav-number">02</span>点名雷达<span
+            class="nav-arrow" aria-hidden="true">↗</span></button>
+        <button class="nav-item" type="button" data-game="pet"><span class="nav-number">03</span>电子宠物<span
+            class="nav-arrow" aria-hidden="true">↗</span></button>
+        <button class="nav-item" type="button" data-game="compliment"><span class="nav-number">04</span>废话生成器<span
+            class="nav-arrow" aria-hidden="true">↗</span></button>
+        <button class="nav-item" type="button" data-game="bug"><span class="nav-number">05</span>Bug 模拟器<span
+            class="nav-arrow" aria-hidden="true">↗</span></button>
+        <div class="sidebar-foot">今天也要认真摸鱼。<br>所有结果仅供娱乐。</div>
+      </nav>
+      <main class="main" id="main-content">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">MOYU TOOLBOX / 2026</p>
+            <h1>给无聊一点惊喜<span class="accent">.</span></h1>
+            <p class="intro">五个随开随玩的课间小游戏，选一个试试。</p>
+          </div>
+          <div class="counter"><strong>05</strong><span>个小游戏</span></div>
+        </div>
+        <section class="game-panel" id="fortune" aria-labelledby="fortune-title">
+          <div class="panel-heading">
+            <div class="panel-icon icon-orange" aria-hidden="true">✷</div>
+            <div>
+              <p class="eyebrow">GAME 01 / LUCK</p>
+              <h2 id="fortune-title">赛博运势</h2>
+            </div>
+          </div>
+          <p class="description">今日的宇宙信号已经接入。按下按钮，接收一条专属好运。</p>
+          <div class="result fortune-result" id="fortune-output" role="status" aria-live="polite"><span
+              class="placeholder">等待宇宙回应…</span></div>
+          <button class="primary-button" id="fortune-button" type="button">抽取今日运势 <span
+              aria-hidden="true">↗</span></button>
+        </section>
+        <section class="game-panel" id="attendance" aria-labelledby="attendance-title" hidden>
+          <div class="panel-heading">
+            <div class="panel-icon icon-yellow" aria-hidden="true">◉</div>
+            <div>
+              <p class="eyebrow">GAME 02 / ODDS</p>
+              <h2 id="attendance-title">点名雷达</h2>
+            </div>
+          </div>
+          <p class="description">输入教室气象，看看今天的“点名雷达”有多灵敏。计算结果纯属虚构，请按时上课。</p>
+          <div class="form-grid"><label>老师心情 <select id="teacher-mood">
+                <option value="0">平静</option>
+                <option value="18">严肃</option>
+                <option value="-12">愉快</option>
+              </select></label><label>天气 <select id="weather">
+                <option value="0">晴天</option>
+                <option value="10">雨天</option>
+                <option value="-5">阴天</option>
+              </select></label><label class="check-row"><input type="checkbox" id="friday"> 今天是周五</label><label
+              class="check-row"><input type="checkbox" id="empty-seats"> 后排空位很多</label></div>
+          <div class="result compact-result" id="attendance-output" role="status" aria-live="polite"><span
+              class="placeholder">调整条件后计算</span></div>
+          <button class="primary-button" id="attendance-button" type="button">计算点名概率 <span
+              aria-hidden="true">→</span></button>
+        </section>
+        <section class="game-panel" id="pet" aria-labelledby="pet-title" hidden>
+          <div class="panel-heading">
+            <div class="panel-icon icon-green" aria-hidden="true">✿</div>
+            <div>
+              <p class="eyebrow">GAME 03 / PET</p>
+              <h2 id="pet-title">电子宠物</h2>
+            </div>
+          </div>
+          <p class="description">你的课间搭子已经就位。点击它打招呼，或者请它吃点东西。</p>
+          <button class="pet-stage" id="pet-button" type="button" aria-label="和电子小猫互动"><span class="pet-face"
+              aria-hidden="true">/\_/\\<br>( o.o )<br> &gt; ^ &lt;</span></button>
+          <div class="pet-actions"><button class="primary-button" id="feed-button" type="button">喂一口小鱼干 <span
+                aria-hidden="true">+</span></button><span id="pet-count">已投喂 0 次</span></div>
+          <div class="result compact-result" id="pet-output" role="status" aria-live="polite">小猫：你好呀，今天也辛苦啦。</div>
+        </section>
+        <section class="game-panel" id="compliment" aria-labelledby="compliment-title" hidden>
+          <div class="panel-heading">
+            <div class="panel-icon icon-pink" aria-hidden="true">♡</div>
+            <div>
+              <p class="eyebrow">GAME 04 / WORDS</p>
+              <h2 id="compliment-title">废话生成器</h2>
+            </div>
+          </div>
+          <p class="description">输入名字，随机收获一句彩虹屁或无伤大雅的吐槽。</p>
+          <div class="form-grid"><label>怎么称呼你 <input id="player-name" maxlength="20" placeholder="比如：摸鱼同学"
+                autocomplete="off"></label><label>生成模式 <select id="words-mode">
+                <option value="praise">彩虹屁</option>
+                <option value="tease">轻度吐槽</option>
+              </select></label></div>
+          <div class="result compact-result" id="compliment-output" role="status" aria-live="polite"><span
+              class="placeholder">等待灵感降临…</span></div>
+          <button class="primary-button" id="compliment-button" type="button">生成一句 <span
+              aria-hidden="true">↗</span></button>
+        </section>
+        <section class="game-panel" id="bug" aria-labelledby="bug-title" hidden>
+          <div class="panel-heading">
+            <div class="panel-icon icon-blue" aria-hidden="true">{ }</div>
+            <div>
+              <p class="eyebrow">GAME 05 / CHAOS</p>
+              <h2 id="bug-title">Bug 模拟器</h2>
+            </div>
+          </div>
+          <p class="description">粘贴一小段代码，看看它能变得多离谱。只改文字，不会运行或上传代码。</p>
+          <label class="code-label" for="code-input">原始代码</label><textarea id="code-input" rows="6" spellcheck="false"
+            placeholder="const isReady = true;\nconsole.log(isReady);"></textarea>
+          <button class="primary-button" id="bug-button" type="button">制造一点 Bug <span
+              aria-hidden="true">⚡</span></button>
+          <div class="code-output">
+            <div class="code-output-title">模拟结果 <span>仅供娱乐</span></div>
+            <pre id="bug-output" role="status" aria-live="polite">等待输入代码…</pre>
+          </div>
+        </section>
+        <footer class="footer">开源文化课程项目 · 内容为娱乐创作，不代表真实预测</footer>
+      </main>
+    </div>
+  </div>
+</body>
+
+</html>
