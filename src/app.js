@@ -22,19 +22,43 @@ const praiseLines = ["{name}，你今天的状态像刚刚跑通的程序，漂�
 const teaseLines = ["{name}，你的待办清单可能比今天的天气更复杂。", "{name}，你的摸鱼技术已经可以写进简历了。", "{name}，你的代码在等你，你却在等灵感。"];
 let feedCount = 0;
 
-const buttons = document.querySelectorAll("[data-game]");
+const buttons = [...document.querySelectorAll("[data-game]")];
 const panels = document.querySelectorAll(".game-panel");
-buttons.forEach((button) => button.addEventListener("click", () => {
+function switchGame(button) {
   const game = button.dataset.game;
   buttons.forEach((item) => {
     const active = item === button;
     item.classList.toggle("active", active);
+    item.setAttribute("aria-selected", String(active));
+    item.tabIndex = active ? 0 : -1;
     if (active) item.setAttribute("aria-current", "page");
     else item.removeAttribute("aria-current");
   });
   panels.forEach((panel) => { panel.hidden = panel.id !== game; });
-  document.getElementById(game).querySelector("button, input, select")?.focus();
-}));
+  document.getElementById(`${game}-title`).focus();
+}
+buttons.forEach((button, index) => {
+  button.addEventListener("click", () => switchGame(button));
+  button.addEventListener("keydown", (event) => {
+    const step = event.key === "ArrowRight" || event.key === "ArrowDown" ? 1
+      : event.key === "ArrowLeft" || event.key === "ArrowUp" ? -1 : 0;
+    if (!step && event.key !== "Home" && event.key !== "End") return;
+    event.preventDefault();
+    const next = event.key === "Home" ? 0 : event.key === "End" ? buttons.length - 1
+      : (index + step + buttons.length) % buttons.length;
+    switchGame(buttons[next]);
+    buttons[next].focus();
+  });
+});
+document.addEventListener("keydown", (event) => {
+  const target = event.target;
+  if (event.ctrlKey || event.altKey || event.metaKey || event.isComposing || event.repeat
+    || target instanceof Element && (target.closest("input, textarea, select, [contenteditable]") || target.isContentEditable)) return;
+  const index = Number(event.key) - 1;
+  if (!Number.isInteger(index) || index < 0 || index >= buttons.length) return;
+  event.preventDefault();
+  switchGame(buttons[index]);
+});
 
 document.getElementById("fortune-button").addEventListener("click", () => {
   const selected = document.getElementById("zodiac-sign").value;

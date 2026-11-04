@@ -48,6 +48,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
   gap: 5px;
 }
 .nav-caption { padding: 0 15px 17px; text-transform: uppercase; display: flex; justify-content: space-between; }
+.game-tabs { display: flex; flex-direction: column; gap: 5px; }
 .nav-item {
   border: 0;
   background: transparent;
@@ -79,6 +80,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-
 .eyebrow { font-size: 12px; font-weight: 700; color: #af4770; letter-spacing: 1px; margin: 0 0 12px; }
 h1 { font-size: clamp(27px, 3.6vw, 42px); line-height: 1.25; margin: 0 0 13px; font-weight: 800; }
 h2 { font-size: 24px; margin: 0; }
+.game-panel h2:focus-visible { outline: 2px solid var(--pink-dark); outline-offset: 5px; border-radius: 2px; }
 .accent { color: var(--pink); }
 .intro, .description { color: #725f6a; line-height: 1.75; margin: 0; }
 .counter { display: flex; flex-direction: column; align-items: flex-end; white-space: nowrap; color: var(--muted); font-size: 12px; }
@@ -175,7 +177,8 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; padding: 16px; 
   .topbar { height: 60px; padding: 0 18px; }
   .topbar-note { display: none; }
   .layout { display: block; }
-  .sidebar { border-right: 0; border-bottom: 1px solid var(--line); padding: 12px 14px; flex-direction: row; overflow-x: auto; gap: 5px; }
+  .sidebar { border-right: 0; border-bottom: 1px solid var(--line); padding: 12px 14px; overflow-x: auto; }
+  .game-tabs { flex-direction: row; width: max-content; }
   .nav-caption, .sidebar-foot, .nav-number, .nav-arrow { display: none; }
   .nav-item { flex: none; min-height: 40px; padding: 9px 13px; white-space: nowrap; }
   .main { padding: 30px 20px; }
