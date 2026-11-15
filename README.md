@@ -14,6 +14,8 @@
 
 直接双击 `index.html` 即可运行，手机或电脑浏览器均可访问。不需要 Node.js、服务器、账户或联网。
 
+网址末尾可以带锚点直接打开某个小游戏：`#fortune`、`#attendance`、`#pet`、`#compliment`、`#bug`，例如 `index.html#pet`。切换游戏时地址栏会同步更新（用 `replaceState` 写回，不额外堆历史记录），刷新或把链接发给同学都能停在同一页小游戏上。
+
 ## 项目结构
 
 ```text
