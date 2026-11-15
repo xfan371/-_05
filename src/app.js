@@ -24,7 +24,27 @@ let feedCount = 0;
 
 const buttons = [...document.querySelectorAll("[data-game]")];
 const panels = document.querySelectorAll(".game-panel");
-function switchGame(button) {
+const games = new Map(buttons.map((button) => [button.dataset.game, button]));
+
+function gameFromHash() {
+  const raw = location.hash.slice(1);
+  let id = raw;
+  try { id = decodeURIComponent(raw); } catch { id = raw; }
+  return games.has(id) ? id : null;
+}
+
+function syncHash(game) {
+  if (gameFromHash() === game) return;
+  const url = new URL(location.href);
+  url.hash = game;
+  try {
+    history.replaceState(null, "", url.href);
+  } catch {
+    location.replace(url.href);
+  }
+}
+
+function switchGame(button, { focusHeading = true, writeHash = true } = {}) {
   const game = button.dataset.game;
   buttons.forEach((item) => {
     const active = item === button;
@@ -35,7 +55,8 @@ function switchGame(button) {
     else item.removeAttribute("aria-current");
   });
   panels.forEach((panel) => { panel.hidden = panel.id !== game; });
-  document.getElementById(`${game}-title`).focus();
+  if (writeHash) syncHash(game);
+  if (focusHeading) document.getElementById(`${game}-title`).focus();
 }
 buttons.forEach((button, index) => {
   button.addEventListener("click", () => switchGame(button));
@@ -58,6 +79,16 @@ document.addEventListener("keydown", (event) => {
   if (!Number.isInteger(index) || index < 0 || index >= buttons.length) return;
   event.preventDefault();
   switchGame(buttons[index]);
+});
+
+const initialGame = gameFromHash();
+if (initialGame) switchGame(games.get(initialGame), { focusHeading: false, writeHash: false });
+
+window.addEventListener("hashchange", () => {
+  const game = gameFromHash();
+  if (!game) return;
+  const button = games.get(game);
+  if (!button.classList.contains("active")) switchGame(button, { focusHeading: false, writeHash: false });
 });
 
 document.getElementById("fortune-button").addEventListener("click", () => {
